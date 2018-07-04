@@ -1,10 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+/** */
+class SearchInput extends Component {
+  constructor(props) {
+    super(props);
 
-const SearchInput = props => {
+    this.state = {
+      text: this.props.text
+    };
+  }
+
+  handleInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    this.props.onSearch(this.state);
+  };
+
+  render() {
     return (
-        <form className="searchForm">
-        <input type="text" className="searchInput" value="beatles" />
+      <form onSubmit={this.handleSubmit} className="searchForm">
+        <input
+          type="text"
+          autoFocus
+          className="searchInput"
+          name="name"
+          id="name"
+          value={this.state.text}
+          onChange={this.handleInputChange}
+        />
+
         <button type="submit" className="searchButtonLayout searchButton">
           <svg viewBox="0 0 27 28" xmlns="http://www.w3.org/2000/svg">
             <title>Buscar</title>
@@ -17,10 +47,9 @@ const SearchInput = props => {
         </button>
       </form>
     );
-};
+  }
+}
 
-SearchInput.propTypes = {
-    
-};
+SearchInput.propTypes = {};
 
 export default SearchInput;

@@ -1,24 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Artist from './Artist'
-const ArtistsList = props => {
-    const artists = props.artists; // Por ahora los dejamos aquí, luego parametrizaremos.
-    return (
-        <div className="artistsList">
-         { props.artists.map((artist) => (
-            <div className="artistsListItem">
-              <Artist
-                artist={artist}
-                selected={props.selectedArtists.some(a => a.id === artist.id)}
-              />
-            </div>
-          ))}
+import React from "react";
+import PropTypes from "prop-types";
+import Artist from "./Artist";
+
+const ArtistsList = ({ artists, selectedArtists, onSelectArtist }) => {
+  return (
+    <div className="artistsList">
+      {artists.map(artist => (
+        <div key={artist.id} className="artistsListItem">
+          <Artist
+            artist={artist}
+            selected={selectedArtists.some(a => a.id === artist.id)}
+            onSelect={onSelectArtist}
+          />
         </div>
-      )
+      ))}
+    </div>
+  );
 };
 
-ArtistsList.propTypes = {
-    
-};
+ArtistsList.propTypes = {};
 
 export default ArtistsList;
