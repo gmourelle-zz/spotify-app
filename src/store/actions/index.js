@@ -1,7 +1,7 @@
 import { Actions } from "../../constants/actionTypes";
 
 export const getArtistsSuccess = payload => ({
-  type: Actions.GET_PLAYERS_SUCCESS,
+  type: Actions.GET_ARTISTS_SUCCESS,
   payload
 });
 export const getArtistsRequest = () => ({ type: Actions.GET_ARTISTS_REQUEST });

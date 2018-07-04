@@ -21,13 +21,12 @@ import CollectionsPanel from "../components/CollectionPanel";
  */
 class Main extends Component {
   render() {
+    const { artists } = this.props;
+
     return (
       <div>
         <div className="leftPanel">
-          <ArtistsPanel
-            selectedArtists={this.state.selectedArtists}
-            onSelectArtist={this.handleSelectArtist}
-          />
+          <ArtistsPanel artists={artists} />
         </div>
         <div className="rightFixedPanel">
           <CollectionsPanel />

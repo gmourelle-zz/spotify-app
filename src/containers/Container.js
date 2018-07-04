@@ -3,19 +3,19 @@ import { connect } from "react-redux";
 import { getFilteredPlayers } from "../reducers/selectors";
 
 import Main from "./Main";
-import { getPlayers, filterPlayers } from "./../actions";
+import { getArtists, getArtistsSuccess } from "./../store/actions";
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getPlayers,
-      filterPlayers
+      getArtistsSuccess
     },
     dispatch
   );
 
 const mapStateToProps = state => ({
-  artists: getFilteredPlayers(state),
+  //artists: getFilteredPlayers(state),
+  artists: state.finder.artists,
   filter: state.finder.filter,
   fetching: state.finder.fetching
 });

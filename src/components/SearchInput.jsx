@@ -18,8 +18,9 @@ class SearchInput extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
-    this.props.onSearch(this.state);
+    console.log("submit");
+    this.props.onSearch(this.state.text);
+    //this.props.onSearch(this.state);
   };
 
   render() {
