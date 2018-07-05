@@ -3,11 +3,14 @@ const CLIENT_ID = "042192359e1344a4ad13a6f4e739aa34";
 let accessToken = localStorage.getItem("accessToken");
 
 function redirectToAuthorize() {
-  const redirectUri = process.env.NODE_ENV === "production"
-    ? `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${window
-        .location.href}`
-    : `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${window
-        .location.origin}/&state=${window.location.pathname}`;
+  const redirectUri =
+    process.env.NODE_ENV === "production"
+      ? `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${
+          window.location.href
+        }`
+      : `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${
+          window.location.origin
+        }/&state=${window.location.pathname}`;
   window.location = redirectUri;
 }
 
@@ -16,9 +19,10 @@ if (window.location.hash) {
   accessToken = decodeURIComponent(params[0].split("=")[1]);
   localStorage.setItem("accessToken", accessToken);
 
-  const path = process.env.NODE_ENV === "production"
-    ? window.location.pathname
-    : decodeURIComponent(params[3].split("=")[1]);
+  const path =
+    process.env.NODE_ENV === "production"
+      ? window.location.pathname
+      : decodeURIComponent(params[3].split("=")[1]);
   window.history.replaceState(null, document.title, path);
 }
 
@@ -42,11 +46,11 @@ function fetchSpotify(endpoint) {
   });
 }
 
-export function getArtists(query, offset = 0) {
+export const getArtistsApi = (query, offset = 0) => {
   return fetchSpotify(`/search?q=${query}&type=artist&offset=${offset}`)
     .then(res => res.json())
     .then(response => response.artists);
-}
+};
 
 export function getArtist(id) {
   return fetchSpotify(`/artists/${id}`)

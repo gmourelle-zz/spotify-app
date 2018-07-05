@@ -1,9 +1,11 @@
 import { Actions } from "../../constants/actionTypes";
+import { getArtistsApi } from "../../api";
 
 export const getArtistsSuccess = payload => ({
   type: Actions.GET_ARTISTS_SUCCESS,
   payload
 });
+
 export const getArtistsRequest = () => ({ type: Actions.GET_ARTISTS_REQUEST });
 
 export const filterArtists = payload => ({
@@ -11,7 +13,7 @@ export const filterArtists = payload => ({
   payload: payload
 });
 
-const getPlayerError = payload => ({
+const getArtistError = payload => ({
   type: Actions.GET_PLAYERS_ERROR,
   payload: payload
 });
@@ -19,14 +21,14 @@ const getPlayerError = payload => ({
 const urlPlayers =
   "https://football-players-b31f2.firebaseio.com/players.json?print=pretty";
 
-export const getArtists = () => {
+export const getArtists = (query, offset = 0) => {
+  // export const getArtists = () => {
   return dispatch => {
-    dispatch(getPlayerRequest());
-    return fetch(urlPlayers)
-      .then(data => data.json())
-      .then(player_data => {
-        dispatch(getArtistsRequest(player_data));
+    dispatch(getArtistsRequest());
+    return getArtistsApi(query, offset)
+      .then(artist_data => {
+        dispatch(getArtistsSuccess(artist_data));
       })
-      .catch(err => getPlayerError(err));
+      .catch(err => getArtistError(err));
   };
 };

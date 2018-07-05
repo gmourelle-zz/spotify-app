@@ -2,13 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 /** */
 class SearchInput extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      text: this.props.text
-    };
-  }
+  state = { name: "" };
 
   handleInputChange = e => {
     this.setState({
@@ -18,8 +12,8 @@ class SearchInput extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("submit");
-    this.props.onSearch(this.state.text);
+    console.log(this.state);
+    this.props.onSearch(this.state);
     //this.props.onSearch(this.state);
   };
 
@@ -32,7 +26,7 @@ class SearchInput extends Component {
           className="searchInput"
           name="name"
           id="name"
-          value={this.state.text}
+          value={this.state.name}
           onChange={this.handleInputChange}
         />
 
@@ -51,6 +45,8 @@ class SearchInput extends Component {
   }
 }
 
-SearchInput.propTypes = {};
+SearchInput.propTypes = {
+  onSearch: PropTypes.func.isRequired
+};
 
 export default SearchInput;

@@ -8,12 +8,12 @@ import { getArtists } from "./../data";
         selectedArtists={this.props.selectedArtists}
         onSelectArtist={this.props.onSelectArtist}
       /> */
-const ArtistsPanel = ({ artists }) => {
+const ArtistsPanel = ({ getArtists }) => {
   //const artists = getArtists();
   //const selectedArtists = [artists[0], artists[2]];
   return (
     <div>
-      <SearchInput onSearch={artists} />
+      <SearchInput onSearch={getArtists} />
     </div>
   );
 };

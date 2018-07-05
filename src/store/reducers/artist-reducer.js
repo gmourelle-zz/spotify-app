@@ -10,17 +10,17 @@ export const initialState = {
   selectedArtists: []
 };
 
-const playerReducer = (state = initialState, action) => {
+const artistReducer = (state = initialState, action) => {
   switch (action.type) {
-    case Actions.GET_PLAYERS_REQUEST:
+    case Actions.GET_ARTISTS_REQUEST:
       return { ...state, fetching: true };
-    case Actions.GET_PLAYERS_SUCCESS:
-      return { ...state, players: action.payload, fetching: false };
-    case Actions.FILTER_PLAYERS:
+    case Actions.GET_ARTISTS_SUCCESS:
+      return { ...state, artists: action.payload, fetching: false };
+    case Actions.FILTER_ARTISTS:
       return { ...state, filter: action.payload };
     default:
       return state;
   }
 };
 
-export default playerReducer;
+export default artistReducer;
