@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ArtistsPanel from "../components/ArtistsPanel";
 import CollectionsPanel from "../components/CollectionPanel";
-
 /**
  * handleSelectArtist(artist) {
     const without = this.state.selectedArtists.filter(a => a.id !== artist.id);
@@ -21,12 +20,17 @@ import CollectionsPanel from "../components/CollectionPanel";
  */
 class Main extends Component {
   render() {
-    const { artists, getArtists, filterArtists } = this.props;
+    const { artists, getArtists, filterArtists, fetching } = this.props;
 
     return (
       <div>
         <div className="leftPanel">
-          <ArtistsPanel getArtists={getArtists} />
+          <ArtistsPanel
+            getArtists={getArtists}
+            fetching={fetching}
+            artists={artists}
+            loading={fetching}
+          />
         </div>
         <div className="rightFixedPanel">
           <CollectionsPanel />

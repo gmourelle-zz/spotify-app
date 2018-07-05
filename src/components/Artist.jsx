@@ -4,7 +4,7 @@ import ArtistImage from "./ArtistImage";
 import SpotifyLogo from "./SpotifyLogo";
 
 const formatter = new Intl.NumberFormat("es-AR");
-
+/*{formatter.format(artist.followers.total)} Seguidores */
 const Artist = ({ artist, selected, onSelect }) => {
   return (
     <div
@@ -17,7 +17,6 @@ const Artist = ({ artist, selected, onSelect }) => {
       <span className="artistName">{artist.name}</span>
 
       <span>
-        {formatter.format(artist.followers.total)} Seguidores
         {artist.genres.length > 0 && " · " + artist.genres.join(", ")}
         {" · "}
         <a

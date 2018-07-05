@@ -18,9 +18,6 @@ const getArtistError = payload => ({
   payload: payload
 });
 
-const urlPlayers =
-  "https://football-players-b31f2.firebaseio.com/players.json?print=pretty";
-
 export const getArtists = (query, offset = 0) => {
   // export const getArtists = () => {
   return dispatch => {
