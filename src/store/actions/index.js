@@ -21,7 +21,7 @@ const getArtistError = payload => ({
   payload: payload
 });
 
-export const getArtists = (query, offset = 0) => {
+export const getArtists = (query, offset) => {
   return dispatch => {
     dispatch(getArtistsRequest(query));
     return getArtistsApi(query, offset)

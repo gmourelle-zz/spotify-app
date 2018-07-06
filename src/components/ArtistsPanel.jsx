@@ -8,6 +8,9 @@ import LoadMore from "../components/LoadMore";
         artists={artists}
         selectedArtists={this.props.selectedArtists}
         onSelectArtist={this.props.onSelectArtist}
+        <Loading loading={fetching}>
+          <ArtistsList artists={artists} />
+        </Loading>
       /> */
 
 class ArtistsPanel extends Component {
@@ -20,9 +23,9 @@ class ArtistsPanel extends Component {
     return (
       <div>
         <SearchInput onSearch={getArtists} />
-        <Loading loading={fetching}>
-          <ArtistsList artists={artists} />
-        </Loading>
+
+        <ArtistsList artists={artists} />
+
         {total > artists.length ? (
           <div className="loadMoreLayout">
             <LoadMore loading={fetching} onClick={this.handleLoadMore} />
