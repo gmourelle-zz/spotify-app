@@ -20,6 +20,9 @@ const ArtistImage = ({ size, artist }) => {
   );
 };
 
-ArtistImage.propTypes = {};
+ArtistImage.propTypes = {
+  size: PropTypes.number.isRequired,
+  artist: PropTypes.object
+};
 
 export default ArtistImage;

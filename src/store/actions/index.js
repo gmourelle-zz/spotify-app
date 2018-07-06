@@ -6,7 +6,10 @@ export const getArtistsSuccess = payload => ({
   payload
 });
 
-export const getArtistsRequest = () => ({ type: Actions.GET_ARTISTS_REQUEST });
+export const getArtistsRequest = payload => ({
+  type: Actions.GET_ARTISTS_REQUEST,
+  payload
+});
 
 export const filterArtists = payload => ({
   type: Actions.FILTER_ARTISTS,
@@ -19,9 +22,8 @@ const getArtistError = payload => ({
 });
 
 export const getArtists = (query, offset = 0) => {
-  // export const getArtists = () => {
   return dispatch => {
-    dispatch(getArtistsRequest());
+    dispatch(getArtistsRequest(query));
     return getArtistsApi(query, offset)
       .then(artist_data => {
         dispatch(getArtistsSuccess(artist_data));

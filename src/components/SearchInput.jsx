@@ -12,9 +12,9 @@ class SearchInput extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
-    this.props.onSearch(this.state);
-    //this.props.onSearch(this.state);
+    if (this.state.name.length === 0) return;
+
+    this.props.onSearch(this.state.name);
   };
 
   render() {
@@ -26,6 +26,7 @@ class SearchInput extends Component {
           className="searchInput"
           name="name"
           id="name"
+          placeholder="Start typing"
           value={this.state.name}
           onChange={this.handleInputChange}
         />

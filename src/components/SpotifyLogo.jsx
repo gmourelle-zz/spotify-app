@@ -13,6 +13,8 @@ const SpotifyLogo = ({ size }) => {
   );
 };
 
-SpotifyLogo.propTypes = {};
+SpotifyLogo.propTypes = {
+  size: PropTypes.number.isRequired
+};
 
 export default SpotifyLogo;

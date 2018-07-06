@@ -13,13 +13,13 @@ export const initialState = {
 const artistReducer = (state = initialState, action) => {
   switch (action.type) {
     case Actions.GET_ARTISTS_REQUEST:
-      return { ...state, fetching: true };
+      return { ...state, fetching: true, filter: action.payload };
     case Actions.GET_ARTISTS_SUCCESS:
       return {
         ...state,
-        artists: action.payload,
+        artists: action.payload.items,
         fetching: false,
-        filter: action.payload
+        total: action.payload.total
       };
     case Actions.FILTER_ARTISTS:
       return { ...state, filter: action.payload };

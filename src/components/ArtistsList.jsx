@@ -4,21 +4,23 @@ import Artist from "./Artist";
 /** selected={selectedArtists.some(a => a.id === artist.id)}
  onSelect={onSelectArtist} */
 const ArtistsList = ({ artists, selectedArtists, onSelectArtist }) => {
-  return (
-    <div className="artistsList">
-      {artists.items.length > 0 ? (
-        artists.items.map(artist => (
-          <div className="artistsListItem">
+  if (artists.length > 0) {
+    return (
+      <div className="artistsList">
+        {artists.map(artist => (
+          <div key={artist.id} className="artistsListItem">
             <Artist key={artist.id} artist={artist} />
           </div>
-        ))
-      ) : (
-        <div />
-      )}
-    </div>
-  );
+        ))}
+      </div>
+    );
+  } else {
+    return <div className="noResults">No se obtuvieron resultados</div>;
+  }
 };
 
-ArtistsList.propTypes = {};
+ArtistsList.propTypes = {
+  artist: PropTypes.object
+};
 
 export default ArtistsList;

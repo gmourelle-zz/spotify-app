@@ -5,7 +5,7 @@ import CircularProgress from "material-ui/CircularProgress";
 const Loading = ({ loading, children }) => {
   if (loading) {
     return (
-      <div>
+      <div className="loading">
         <CircularProgress size={60} thickness={7} />
       </div>
     );

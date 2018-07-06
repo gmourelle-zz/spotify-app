@@ -4,19 +4,19 @@ import ArtistImage from "./ArtistImage";
 import SpotifyLogo from "./SpotifyLogo";
 
 const formatter = new Intl.NumberFormat("es-AR");
-/*{formatter.format(artist.followers.total)} Seguidores */
+/*
+
+onClick={() => {
+        onSelect(artist);
+      }}*/
 const Artist = ({ artist, selected, onSelect }) => {
   return (
-    <div
-      onClick={() => {
-        onSelect(artist);
-      }}
-      className={`artist ${selected ? "isSelected" : null}`}
-    >
+    <div className={`artist ${selected ? "isSelected" : null}`}>
       <ArtistImage size={200} artist={artist} />
       <span className="artistName">{artist.name}</span>
 
       <span>
+        {formatter.format(artist.followers.total)} Seguidores
         {artist.genres.length > 0 && " · " + artist.genres.join(", ")}
         {" · "}
         <a
@@ -32,6 +32,8 @@ const Artist = ({ artist, selected, onSelect }) => {
   );
 };
 
-Artist.propTypes = {};
+Artist.propTypes = {
+  artist: PropTypes.object.isRequired
+};
 
 export default Artist;

@@ -20,7 +20,7 @@ import CollectionsPanel from "../components/CollectionPanel";
  */
 class Main extends Component {
   render() {
-    const { artists, getArtists, filterArtists, fetching } = this.props;
+    const { artists, getArtists, fetching, total, filter } = this.props;
 
     return (
       <div>
@@ -30,6 +30,8 @@ class Main extends Component {
             fetching={fetching}
             artists={artists}
             loading={fetching}
+            total={total}
+            filter={filter}
           />
         </div>
         <div className="rightFixedPanel">
