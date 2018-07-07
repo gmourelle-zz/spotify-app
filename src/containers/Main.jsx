@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import ArtistsPanel from "../components/ArtistsPanel";
 import CollectionsPanel from "../components/CollectionPanel";
-/**
- * handleSelectArtist(artist) {
+/**selectedArtists={selectedArtists} */
+class Main extends Component {
+  handleSelectArtist(artist) {
     const without = this.state.selectedArtists.filter(a => a.id !== artist.id);
     if (without.length !== this.state.selectedArtists.length) {
       this.setState({
@@ -14,13 +15,16 @@ import CollectionsPanel from "../components/CollectionPanel";
       });
     }
   }
- * selectedArtists={this.state.selectedArtists}
-            onSelectArtist={this.handleSelectArtist}
 
- */
-class Main extends Component {
   render() {
-    const { artists, getArtists, fetching, total, filter } = this.props;
+    const {
+      artists,
+      getArtists,
+      fetching,
+      total,
+      filter,
+      selectedArtist
+    } = this.props;
 
     return (
       <div>
@@ -32,6 +36,7 @@ class Main extends Component {
             loading={fetching}
             total={total}
             filter={filter}
+            onSelectArtist={selectedArtist}
           />
         </div>
         <div className="rightFixedPanel">

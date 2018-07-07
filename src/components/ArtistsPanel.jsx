@@ -18,13 +18,14 @@ class ArtistsPanel extends Component {
     //this.fetchArtists(searchText, artists.length);
     this.props.getArtists(this.props.filter, this.props.artists.length);
   };
+
   render() {
-    const { getArtists, artists, fetching, total } = this.props;
+    const { getArtists, artists, fetching, total, onSelectArtist } = this.props;
     return (
       <div>
         <SearchInput onSearch={getArtists} />
 
-        <ArtistsList artists={artists} />
+        <ArtistsList artists={artists} onSelectArtist={onSelectArtist} />
 
         {total > artists.length ? (
           <div className="loadMoreLayout">

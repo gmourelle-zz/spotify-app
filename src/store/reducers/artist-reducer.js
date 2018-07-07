@@ -31,6 +31,15 @@ const artistReducer = (state = initialState, action) => {
       };
     case Actions.FILTER_ARTISTS:
       return { ...state, filter: action.payload };
+    case Actions.SELECTED_ARTIST:
+      // return {
+      //   ...state,
+      //   selectedArtists: { id: action.payload.id, name: action.payload.name }
+      // };
+      return {
+        ...state,
+        selectedArtists: action.payload
+      };
     default:
       return state;
   }

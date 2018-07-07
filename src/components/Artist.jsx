@@ -9,9 +9,15 @@ const formatter = new Intl.NumberFormat("es-AR");
 onClick={() => {
         onSelect(artist);
       }}*/
-const Artist = ({ artist, selected, onSelect }) => {
+const Artist = ({ artist, selected, onSelectArtist }) => {
   return (
-    <div className={`artist ${selected ? "isSelected" : null}`}>
+    <div
+      onClick={() => {
+        onSelectArtist(artist);
+        console.log(artist);
+      }}
+      className={`artist ${selected ? "isSelected" : null}`}
+    >
       <ArtistImage size={200} artist={artist} />
       <span className="artistName">{artist.name}</span>
 

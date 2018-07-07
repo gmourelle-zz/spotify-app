@@ -1,6 +1,11 @@
 import { Actions } from "../../constants/actionTypes";
 import { getArtistsApi } from "../../api";
 
+export const selectedArtist = payload => ({
+  type: Actions.SELECTED_ARTIST,
+  payload
+});
+
 export const getArtistsSuccess = payload => ({
   type: Actions.GET_ARTISTS_SUCCESS,
   payload

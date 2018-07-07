@@ -9,7 +9,11 @@ const ArtistsList = ({ artists, selectedArtists, onSelectArtist }) => {
       <div className="artistsList">
         {artists.map(artist => (
           <div key={artist.id} className="artistsListItem">
-            <Artist key={artist.id} artist={artist} />
+            <Artist
+              key={artist.id}
+              artist={artist}
+              onSelectArtist={onSelectArtist}
+            />
           </div>
         ))}
       </div>
