@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ArtistsPanel from "../components/ArtistsPanel";
-import CollectionsPanel from "../components/CollectionPanel";
+import CollectionsPanel from "../components/CollectionsPanel";
 /**selectedArtists={selectedArtists} */
 class Main extends Component {
   handleSelectArtist(artist) {
@@ -23,7 +23,8 @@ class Main extends Component {
       fetching,
       total,
       filter,
-      selectedArtist
+      selectedArtist,
+      selectedArtists
     } = this.props;
 
     return (
@@ -40,7 +41,7 @@ class Main extends Component {
           />
         </div>
         <div className="rightFixedPanel">
-          <CollectionsPanel />
+          <CollectionsPanel selectedArtists={selectedArtists} />
         </div>
       </div>
     );

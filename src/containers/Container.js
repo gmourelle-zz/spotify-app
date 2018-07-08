@@ -1,6 +1,6 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getFilteredArtists } from "../store/reducers/selectors";
+//import { getFilteredArtists } from "../store/reducers/selectors";
 
 import Main from "./Main";
 import { getArtists, selectedArtist } from "./../store/actions";

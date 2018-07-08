@@ -16,7 +16,6 @@ const artistReducer = (state = initialState, action) => {
       return { ...state, fetching: true, filter: action.payload };
     case Actions.GET_ARTISTS_SUCCESS:
       let artists = [];
-
       artists =
         action.payload.offset > 0
           ? state.artists.concat(action.payload.items)
@@ -32,13 +31,9 @@ const artistReducer = (state = initialState, action) => {
     case Actions.FILTER_ARTISTS:
       return { ...state, filter: action.payload };
     case Actions.SELECTED_ARTIST:
-      // return {
-      //   ...state,
-      //   selectedArtists: { id: action.payload.id, name: action.payload.name }
-      // };
       return {
         ...state,
-        selectedArtists: action.payload
+        selectedArtists: [...state.selectedArtists, action.payload]
       };
     default:
       return state;
