@@ -1,6 +1,6 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-//import { getFilteredArtists } from "../store/reducers/selectors";
+import { getFilteredArtists } from "../store/reducers/selectors";
 
 import Main from "./Main";
 import { getArtists, selectedArtist } from "./../store/actions";
@@ -21,6 +21,7 @@ const mapStateToProps = state => ({
   fetching: state.finder.fetching,
   total: state.finder.total,
   selectedArtists: state.finder.selectedArtists
+  //  selectedArtists: getFilteredArtists(state)
 });
 
 export default connect(
