@@ -24,10 +24,23 @@ class ArtistsPanel extends Component {
     return (
       <div>
         <SearchInput onSearch={getArtists} />
+        {artists ? (
+          <div>
+            {fetching ? (
+              <Loading loading={fetching}>
+                <ArtistsList
+                  artists={artists}
+                  fetching={fetching}
+                  onSelectArtist={onSelectArtist}
+                />
+              </Loading>
+            ) : null}
+          </div>
+        ) : (
+          <div> {fetching ? <Loading loading={fetching} /> : null}</div>
+        )}
 
-        <ArtistsList artists={artists} onSelectArtist={onSelectArtist} />
-
-        {total > artists.length ? (
+        {artists && total > artists.length ? (
           <div className="loadMoreLayout">
             <LoadMore loading={fetching} onClick={this.handleLoadMore} />
           </div>

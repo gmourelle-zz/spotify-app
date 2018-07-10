@@ -1,6 +1,5 @@
 import React from "react";
 import CircularProgress from "material-ui/CircularProgress";
-//import { Container } from "reactstrap";
 
 const Loading = ({ loading, children }) => {
   if (loading) {
