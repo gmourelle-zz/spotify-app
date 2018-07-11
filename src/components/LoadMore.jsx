@@ -1,20 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const LoadMore = ({ loading, onClick }) => {
+const LoadMore = ({ loadingMore, onClick }) => {
   return (
     <button
       type="button"
       className="loadMore"
-      onClick={loading ? null : onClick}
+      onClick={loadingMore ? null : onClick}
     >
-      {loading ? "Cargando..." : "Cargar más"}
+      {loadingMore ? "Cargando..." : "Cargar más"}
     </button>
   );
 };
 
 LoadMore.propTypes = {
-  loading: PropTypes.bool.isRequired
+  loadingMore: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default LoadMore;

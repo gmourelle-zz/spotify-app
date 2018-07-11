@@ -1,17 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Artist from "./Artist";
-import Loading from "./loading/Loading";
-import CircularProgress from "material-ui/CircularProgress";
 
 /** selected={selectedArtists.some(a => a.id === artist.id)}
  onSelect={onSelectArtist} */
-const ArtistsList = ({
-  artists,
-  selectedArtists,
-  onSelectArtist,
-  fetching
-}) => {
+const ArtistsList = ({ artists, selectedArtists, onSelectArtist }) => {
   if (artists.length > 0) {
     return (
       <div className="artistsList">

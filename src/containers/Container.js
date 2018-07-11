@@ -9,13 +9,14 @@ import {
 } from "../store/reducers/selectors";
 
 import Main from "./Main";
-import { getArtists, selectedArtist } from "./../store/actions";
+import { getArtists, selectedArtist, getLoadMore } from "./../store/actions";
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       getArtists,
-      selectedArtist
+      selectedArtist,
+      getLoadMore
     },
     dispatch
   );
@@ -25,7 +26,8 @@ const mapStateToProps = state => ({
   filter: getFilter(state),
   fetching: getFetching(state),
   total: getTotal(state),
-  selectedArtists: getSelectedArtists(state)
+  selectedArtists: getSelectedArtists(state),
+  loadingMore: state.finder.loadingMore
 });
 
 export default connect(

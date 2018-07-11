@@ -138,6 +138,10 @@ a:hover {
   cursor: pointer;
 }
 
+.loadMore:hover {
+  background: blue;
+}
+
 .loading {
   width: 100%;
   height: 100%;

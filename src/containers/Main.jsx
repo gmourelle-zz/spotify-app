@@ -24,7 +24,9 @@ class Main extends Component {
       total,
       filter,
       selectedArtist,
-      selectedArtists
+      selectedArtists,
+      getLoadMore,
+      loadingMore
     } = this.props;
 
     return (
@@ -38,6 +40,8 @@ class Main extends Component {
             total={total}
             filter={filter}
             onSelectArtist={selectedArtist}
+            getLoadMore={getLoadMore}
+            loadingMore={loadingMore}
           />
         </div>
         <div className="rightFixedPanel">

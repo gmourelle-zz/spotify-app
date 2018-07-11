@@ -15,26 +15,32 @@ import LoadMore from "../components/LoadMore";
 
 class ArtistsPanel extends Component {
   handleLoadMore = () => {
-    //this.fetchArtists(searchText, artists.length);
-    this.props.getArtists(this.props.filter, this.props.artists.length);
+    this.props.getLoadMore(this.props.filter, this.props.artists.length);
   };
 
   render() {
-    const { getArtists, artists, fetching, total, onSelectArtist } = this.props;
+    const {
+      getArtists,
+      artists,
+      fetching,
+      total,
+      onSelectArtist,
+      loadingMore
+    } = this.props;
     return (
       <div>
         <SearchInput onSearch={getArtists} />
         {artists ? (
           <div>
-            {fetching ? (
-              <Loading loading={fetching}>
-                <ArtistsList
-                  artists={artists}
-                  fetching={fetching}
-                  onSelectArtist={onSelectArtist}
-                />
-              </Loading>
-            ) : null}
+            {!fetching ? (
+              <ArtistsList
+                artists={artists}
+                fetching={fetching}
+                onSelectArtist={onSelectArtist}
+              />
+            ) : (
+              <Loading loading={fetching} />
+            )}
           </div>
         ) : (
           <div> {fetching ? <Loading loading={fetching} /> : null}</div>
@@ -42,7 +48,7 @@ class ArtistsPanel extends Component {
 
         {artists && total > artists.length ? (
           <div className="loadMoreLayout">
-            <LoadMore loading={fetching} onClick={this.handleLoadMore} />
+            <LoadMore loadingMore={loadingMore} onClick={this.handleLoadMore} />
           </div>
         ) : null}
       </div>
