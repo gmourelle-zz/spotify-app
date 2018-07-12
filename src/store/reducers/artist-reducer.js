@@ -1,7 +1,6 @@
 import { Actions } from "../../constants/actionTypes";
 
 export const initialState = {
-  //artists: [],
   filter: {
     name: ""
   },
@@ -14,7 +13,7 @@ export const initialState = {
 const artistReducer = (state = initialState, action) => {
   switch (action.type) {
     case Actions.GET_ARTISTS_REQUEST:
-      return { ...state, fetching: true, filter: action.payload };
+      return { ...state, fetching: true, total: 0, filter: action.payload };
     case Actions.GET_ARTISTS_SUCCESS:
       return {
         ...state,
@@ -42,10 +41,26 @@ const artistReducer = (state = initialState, action) => {
       };
 
     case Actions.SELECTED_ARTIST:
-      return {
-        ...state,
-        selectedArtists: [...state.selectedArtists, action.payload]
-      };
+      //filtro el array de artistas seleccionados
+      /**
+       * el a.id significa que recorre el array y por cada linea compara el id de esa fila
+       * contra el artista que se selecciono en el click
+       */
+      const without = state.selectedArtists.filter(
+        a => a.id !== action.payload.id
+      );
+      if (without.length !== state.selectedArtists.length) {
+        return {
+          ...state,
+          selectedArtists: without
+        };
+      } else {
+        return {
+          ...state,
+          selectedArtists: [...state.selectedArtists, action.payload]
+        };
+      }
+
     default:
       return state;
   }

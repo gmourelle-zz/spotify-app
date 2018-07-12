@@ -25,7 +25,8 @@ class ArtistsPanel extends Component {
       fetching,
       total,
       onSelectArtist,
-      loadingMore
+      loadingMore,
+      selectedArtists
     } = this.props;
     return (
       <div>
@@ -36,6 +37,7 @@ class ArtistsPanel extends Component {
               <ArtistsList
                 artists={artists}
                 fetching={fetching}
+                selectedArtists={selectedArtists}
                 onSelectArtist={onSelectArtist}
               />
             ) : (
@@ -46,9 +48,16 @@ class ArtistsPanel extends Component {
           <div> {fetching ? <Loading loading={fetching} /> : null}</div>
         )}
 
-        {artists && total > artists.length ? (
-          <div className="loadMoreLayout">
-            <LoadMore loadingMore={loadingMore} onClick={this.handleLoadMore} />
+        {artists ? (
+          <div>
+            {total > artists.length ? (
+              <div className="loadMoreLayout">
+                <LoadMore
+                  loadingMore={loadingMore}
+                  onClick={this.handleLoadMore}
+                />
+              </div>
+            ) : null}
           </div>
         ) : null}
       </div>

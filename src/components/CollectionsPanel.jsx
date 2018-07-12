@@ -6,7 +6,7 @@ import CollectionItem from "./CollectionItem";
               onSelect={this.props.onSelectArtist}
  * 
 */
-const CollectionsPanel = ({ selectedArtists }) => {
+const CollectionsPanel = ({ selectedArtists, onSelectArtist }) => {
   return (
     <div>
       <h2 className="myArtistsTitle">
@@ -16,7 +16,7 @@ const CollectionsPanel = ({ selectedArtists }) => {
       <ul className="myArtistsList">
         {selectedArtists.map(artist => (
           <li key={artist.id} className="myArtistsListItem">
-            <CollectionItem artist={artist} />
+            <CollectionItem artist={artist} onSelect={onSelectArtist} />
           </li>
         ))}
       </ul>

@@ -3,19 +3,6 @@ import ArtistsPanel from "../components/ArtistsPanel";
 import CollectionsPanel from "../components/CollectionsPanel";
 /**selectedArtists={selectedArtists} */
 class Main extends Component {
-  handleSelectArtist(artist) {
-    const without = this.state.selectedArtists.filter(a => a.id !== artist.id);
-    if (without.length !== this.state.selectedArtists.length) {
-      this.setState({
-        selectedArtists: without
-      });
-    } else {
-      this.setState({
-        selectedArtists: this.state.selectedArtists.concat(artist)
-      });
-    }
-  }
-
   render() {
     const {
       artists,
@@ -42,10 +29,14 @@ class Main extends Component {
             onSelectArtist={selectedArtist}
             getLoadMore={getLoadMore}
             loadingMore={loadingMore}
+            selectedArtists={selectedArtists}
           />
         </div>
         <div className="rightFixedPanel">
-          <CollectionsPanel selectedArtists={selectedArtists} />
+          <CollectionsPanel
+            selectedArtists={selectedArtists}
+            onSelectArtist={selectedArtist}
+          />
         </div>
       </div>
     );

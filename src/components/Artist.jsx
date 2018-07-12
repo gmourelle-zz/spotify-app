@@ -14,7 +14,6 @@ const Artist = ({ artist, selected, onSelectArtist }) => {
     <div
       onClick={() => {
         onSelectArtist(artist);
-        console.log(artist);
       }}
       className={`artist ${selected ? "isSelected" : null}`}
     >

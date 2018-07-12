@@ -1,14 +1,14 @@
 import React from "react";
 import ArtistImage from "./ArtistImage";
-/** onSelect
- * 
- *  onClick={() => {
+
+const CollectionItem = ({ artist, onSelect }) => {
+  return (
+    <div
+      className="smallArtist"
+      onClick={() => {
         onSelect(artist);
       }}
-*/
-const CollectionItem = ({ artist }) => {
-  return (
-    <div className="smallArtist">
+    >
       <ArtistImage size={50} artist={artist} />
       <div className="smallArtistName">{artist.name}</div>
     </div>

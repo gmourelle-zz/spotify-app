@@ -13,6 +13,7 @@ const ArtistsList = ({ artists, selectedArtists, onSelectArtist }) => {
             <Artist
               key={artist.id}
               artist={artist}
+              selected={selectedArtists.some(a => a.id === artist.id)}
               onSelectArtist={onSelectArtist}
             />
           </div>
